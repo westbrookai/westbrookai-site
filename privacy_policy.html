@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Privacy Policy for Westbrook AI Pty Ltd.">
+
+  <title>Privacy Policy — Westbrook AI</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate icon" href="/favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAFAF8;
+      --text: #1A1A18;
+      --muted: #6B6B64;
+      --accent: #2D5A3D;
+      --accent-light: #E8F0EB;
+      --border: #E2E2DC;
+      --card-bg: #FFFFFF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    nav a.nav-link {
+      font-size: 0.875rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s, background 0.2s;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+    }
+
+    nav a.nav-link:hover {
+      color: var(--text);
+      background: var(--accent-light);
+    }
+
+    nav a.nav-link.active {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    .content {
+      max-width: 680px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 2.5rem 0 1rem;
+    }
+
+    h2:first-of-type {
+      margin-top: 1.5rem;
+    }
+
+    p {
+      color: var(--text);
+      font-size: 1.0625rem;
+      line-height: 1.8;
+      margin-bottom: 1.25rem;
+    }
+
+    ul {
+      color: var(--text);
+      font-size: 1.0625rem;
+      line-height: 1.8;
+      margin: 0 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    a:hover {
+      border-bottom-color: var(--accent);
+    }
+
+    a:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    footer {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    footer .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    footer a {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      border: none;
+    }
+
+    footer a:hover {
+      color: var(--text);
+      border: none;
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        padding: 1.5rem 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      main {
+        padding: 2rem 1rem 3rem;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      footer .footer-links {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 { animation: fadeUp 0.6s ease both; }
+    .content { animation: fadeUp 0.6s ease 0.1s both; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav aria-label="Main navigation">
+    <a href="index.html" class="logo" aria-label="Westbrook AI Home">Westbrook<span>AI</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="privacy_policy.html" class="nav-link active">Privacy</a>
+      <a href="mailto:admin@westbrookai.com" class="nav-link" aria-label="Contact us via email">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <div class="content">
+      <h1>Privacy Policy</h1>
+
+      <p>Westbrook AI Pty Ltd respects your privacy. This page explains, in general terms, how we may collect, use, and protect information when you visit our website or use our products and services.</p>
+
+      <h2>Information we may collect</h2>
+      <ul>
+        <li>Basic contact information you choose to send us by email.</li>
+        <li>Technical information such as browser type, device information, and general usage data.</li>
+        <li>Information necessary to provide and improve our products and services.</li>
+      </ul>
+
+      <h2>How we may use information</h2>
+      <ul>
+        <li>To respond to inquiries and provide support.</li>
+        <li>To operate, maintain, and improve our website and services.</li>
+        <li>To protect the security and integrity of our systems.</li>
+        <li>To comply with legal obligations.</li>
+      </ul>
+
+      <h2>Sharing of information</h2>
+      <p>We do not sell personal information. We may share information with service providers or where required by law, and only as reasonably necessary to operate our business.</p>
+
+      <h2>Contact</h2>
+      <p>If you have questions about this Privacy Policy, please contact <a href="mailto:admin@westbrookai.com">admin@westbrookai.com</a>.</p>
+    </div>
+  </main>
+
+  <footer role="contentinfo">
+    <p>&copy; 2026 Westbrook AI Pty Ltd. Sydney, Australia.</p>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="mailto:admin@westbrookai.com" aria-label="Email us">admin@westbrookai.com</a>
+      <a href="privacy_policy.html">Privacy Policy</a>
+    </nav>
+  </footer>
+
+</body>
+</html>
