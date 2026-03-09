@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Westbrook AI — Sydney</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAFAF8;
+      --text: #1A1A18;
+      --muted: #6B6B64;
+      --accent: #2D5A3D;
+      --accent-light: #E8F0EB;
+      --border: #E2E2DC;
+      --card-bg: #FFFFFF;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span { color: var(--accent); }
+
+    nav a.nav-link {
+      font-size: 0.875rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav a.nav-link:hover { color: var(--text); }
+
+    .hero {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 6rem 1.5rem 4rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.25rem, 5vw, 3.25rem);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      max-width: 600px;
+    }
+
+    .hero p {
+      margin-top: 1.5rem;
+      font-size: 1.125rem;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.7;
+    }
+
+    .hero-line {
+      width: 48px;
+      height: 2px;
+      background: var(--accent);
+      margin-top: 2rem;
+    }
+
+    .products {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 640px) {
+      .products { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 24px rgba(45, 90, 61, 0.06);
+    }
+
+    .card-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 1.25rem;
+    }
+
+    .card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .card-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .card-link:hover { border-bottom-color: var(--accent); }
+
+    .about {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .about-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .about p {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 540px;
+      line-height: 1.8;
+    }
+
+    footer {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    footer a {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--text); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero h1 { animation: fadeUp 0.6s ease both; }
+    .hero p { animation: fadeUp 0.6s ease 0.1s both; }
+    .hero-line { animation: fadeUp 0.6s ease 0.2s both; }
+    .card:first-child { animation: fadeUp 0.5s ease 0.3s both; }
+    .card:last-child { animation: fadeUp 0.5s ease 0.4s both; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">Westbrook<span>AI</span></a>
+    <a href="mailto:admin@westbrookai.com" class="nav-link">Contact</a>
+  </nav>
+
+  <section class="hero">
+    <h1>Small tools that solve real problems.</h1>
+    <p>Westbrook AI builds focused software for parents and developers. Based in Sydney, Australia.</p>
+    <div class="hero-line"></div>
+  </section>
+
+  <section class="products">
+    <div class="card">
+      <div class="card-badge">For Parents</div>
+      <h2>Nudge</h2>
+      <p>Never forget PE uniform day again. Nudge reads your school emails and sends WhatsApp reminders at the right time.</p>
+      <a href="https://nudge.zipsa.dev" class="card-link">Learn more →</a>
+    </div>
+    <div class="card">
+      <div class="card-badge">For Developers</div>
+      <h2>Zipsa</h2>
+      <p>A security-first registry and runtime for AI agent skills. Audit, sandbox, and run skills with confidence.</p>
+      <a href="https://zipsa.dev" class="card-link">Learn more →</a>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="about-label">About</div>
+    <p>Westbrook AI is an independent software company based in Sydney. We build small, useful tools — starting with the problems we face ourselves as parents and developers.</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Westbrook AI Pty Ltd. Sydney, Australia.</p>
+    <div class="footer-links">
+      <a href="mailto:admin@westbrookai.com">admin@westbrookai.com</a>
+      <a href="/privacy">Privacy</a>
+    </div>
+  </footer>
+
+</body>
+</html>
