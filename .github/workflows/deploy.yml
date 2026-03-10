@@ -1,5 +1,7 @@
 name: Deploy to Cloudflare Pages
 
+run-name: "${{ github.event_name == 'pull_request' && format('PR #{0} @ {1}', github.event.pull_request.number, github.sha) || format('Push @ {0}', github.sha) }}"
+
 on:
   push:
     branches:
@@ -14,17 +16,66 @@ jobs:
     permissions:
       contents: read
       deployments: write
-    name: Deploy to Cloudflare Pages
+      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Generate version info and inject into HTML
+        run: |
+          VERSION=$(git rev-parse --short HEAD)
+          BUILD_DATE=$(TZ='Australia/Sydney' date +"%Y-%m-%dT%H:%M:%S%z")
+          BRANCH=${GITHUB_REF#refs/heads/}
+          COMMIT_MESSAGE=$(git log -1 --pretty=%B | head -n 1)
+
+          # Create version.txt
+          echo "VERSION=$VERSION" > version.txt
+          echo "BUILD_DATE=$BUILD_DATE" >> version.txt
+          echo "BRANCH=$BRANCH" >> version.txt
+          echo "COMMIT_MESSAGE=$COMMIT_MESSAGE" >> version.txt
+          cat version.txt
+
+          # Inject into HTML meta tags
+          sed -i "s|<meta name=\"build-version\" content=\"\">|<meta name=\"build-version\" content=\"$VERSION\">|g" index.html
+          sed -i "s|<meta name=\"build-date\" content=\"\">|<meta name=\"build-date\" content=\"$BUILD_DATE\">|g" index.html
+          sed -i "s|<meta name=\"build-branch\" content=\"\">|<meta name=\"build-branch\" content=\"$BRANCH\">|g" index.html
+
+          echo "Meta tags updated in index.html"
+
       - name: Deploy to Cloudflare Pages
+        id: cf_pages
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: westbrookai
           directory: .
-          # Optional: Enable PR comments
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Show deployment URLs
+        run: |
+          # Output to console (visible in gh run view --log)
+          echo "🚀 Deployment Complete!"
+          echo "Preview URL: ${{ steps.cf_pages.outputs.url }}"
+          echo "Alias: ${{ steps.cf_pages.outputs.alias }}"
+          echo "Environment: ${{ steps.cf_pages.outputs.environment }}"
+
+          # Add to summary (visible in GitHub UI)
+          echo "## 🚀 Deployment Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Environment:** ${{ steps.cf_pages.outputs.environment }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔗 URLs" >> $GITHUB_STEP_SUMMARY
+          echo "- **Preview URL:** ${{ steps.cf_pages.outputs.url }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Alias:** ${{ steps.cf_pages.outputs.alias }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Comment PR with deployment URL
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} --body "## 🚀 Preview Deployment
+
+          **Preview URL:** ${{ steps.cf_pages.outputs.url }}
+
+          Build completed at $(TZ='Australia/Sydney' date '+%Y-%m-%d %H:%M:%S %Z')"
