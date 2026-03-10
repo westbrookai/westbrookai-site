@@ -18,13 +18,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Generate version.txt
+      - name: Generate version info and inject into HTML
         run: |
-          echo "VERSION=$(git rev-parse --short HEAD)" > version.txt
-          echo "BUILD_DATE=$(TZ='Australia/Sydney' date +"%Y-%m-%dT%H:%M:%S%z")" >> version.txt
-          echo "BRANCH=${GITHUB_REF#refs/heads/}" >> version.txt
-          echo "COMMIT_MESSAGE=$(git log -1 --pretty=%B | head -n 1)" >> version.txt
+          VERSION=$(git rev-parse --short HEAD)
+          BUILD_DATE=$(TZ='Australia/Sydney' date +"%Y-%m-%dT%H:%M:%S%z")
+          BRANCH=${GITHUB_REF#refs/heads/}
+          COMMIT_MESSAGE=$(git log -1 --pretty=%B | head -n 1)
+
+          # Create version.txt
+          echo "VERSION=$VERSION" > version.txt
+          echo "BUILD_DATE=$BUILD_DATE" >> version.txt
+          echo "BRANCH=$BRANCH" >> version.txt
+          echo "COMMIT_MESSAGE=$COMMIT_MESSAGE" >> version.txt
           cat version.txt
+
+          # Inject into HTML meta tags
+          sed -i "s|<meta name=\"build-version\" content=\"\">|<meta name=\"build-version\" content=\"$VERSION\">|g" index.html
+          sed -i "s|<meta name=\"build-date\" content=\"\">|<meta name=\"build-date\" content=\"$BUILD_DATE\">|g" index.html
+          sed -i "s|<meta name=\"build-branch\" content=\"\">|<meta name=\"build-branch\" content=\"$BRANCH\">|g" index.html
+
+          echo "Meta tags updated in index.html"
 
       - name: Deploy to Cloudflare Pages
         id: cf_pages
