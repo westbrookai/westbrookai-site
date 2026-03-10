@@ -6,6 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Westbrook AI builds infrastructure for AI agents. Security-first registry, runtime, and tooling for autonomous agents. Based in Sydney, Australia.">
 
+  <!-- Build Info (visible in source only) -->
+  <meta name="build-version" content="">
+  <meta name="build-date" content="">
+  <meta name="build-branch" content="">
+
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://westbrookai.com/">
@@ -354,10 +359,28 @@
       .then(response => response.ok ? response.text() : null)
       .then(data => {
         if (!data) return;
+
+        // Parse version.txt
         const lines = data.split('\n');
         const version = lines.find(l => l.startsWith('VERSION='))?.split('=')[1];
+        const buildDate = lines.find(l => l.startsWith('BUILD_DATE='))?.split('=')[1];
+        const branch = lines.find(l => l.startsWith('BRANCH='))?.split('=')[1];
+
+        // Update meta tags (visible in source only)
+        if (version) document.querySelector('meta[name="build-version"]').content = version;
+        if (buildDate) document.querySelector('meta[name="build-date"]').content = buildDate;
+        if (branch) document.querySelector('meta[name="build-branch"]').content = branch;
+
+        // Display only hash in footer, but show date on hover
         if (version) {
-          document.getElementById('version-info').textContent = ` • v${version}`;
+          const versionEl = document.getElementById('version-info');
+          versionEl.textContent = ` • v${version}`;
+          if (buildDate) {
+            const date = new Date(buildDate);
+            const formatted = date.toISOString().split('T')[0] + ' ' +
+                            date.toISOString().split('T')[1].substring(0, 5) + ' UTC';
+            versionEl.title = `Build: ${formatted}`;
+          }
         }
       })
       .catch(() => {}); // Silently fail if version.txt doesn't exist

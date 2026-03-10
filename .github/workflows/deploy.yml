@@ -21,7 +21,7 @@ jobs:
       - name: Generate version.txt
         run: |
           echo "VERSION=$(git rev-parse --short HEAD)" > version.txt
-          echo "BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> version.txt
+          echo "BUILD_DATE=$(TZ='Australia/Sydney' date +"%Y-%m-%dT%H:%M:%S%z")" >> version.txt
           echo "BRANCH=${GITHUB_REF#refs/heads/}" >> version.txt
           echo "COMMIT_MESSAGE=$(git log -1 --pretty=%B | head -n 1)" >> version.txt
           cat version.txt
