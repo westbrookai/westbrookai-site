@@ -14,17 +14,30 @@ jobs:
     permissions:
       contents: read
       deployments: write
-    name: Deploy to Cloudflare Pages
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Generate version.txt
+        run: |
+          echo "VERSION=$(git rev-parse --short HEAD)" > version.txt
+          echo "BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> version.txt
+          echo "BRANCH=${GITHUB_REF#refs/heads/}" >> version.txt
+          echo "COMMIT_MESSAGE=$(git log -1 --pretty=%B | head -n 1)" >> version.txt
+          cat version.txt
+
       - name: Deploy to Cloudflare Pages
+        id: cf_pages
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: westbrookai
           directory: .
-          # Optional: Enable PR comments
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Show deployment URLs
+        run: |
+          echo "environment=${{ steps.cf_pages.outputs.environment }}"
+          echo "deployment_url=${{ steps.cf_pages.outputs.url }}"
+          echo "deployment_alias=${{ steps.cf_pages.outputs.alias }}"

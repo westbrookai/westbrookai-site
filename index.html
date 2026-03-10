@@ -338,12 +338,30 @@
   </section>
 
   <footer role="contentinfo">
-    <p>&copy; 2026 Westbrook AI Pty Ltd. Sydney, Australia.</p>
+    <p>
+      &copy; 2026 Westbrook AI Pty Ltd. Sydney, Australia.
+      <span id="version-info" style="opacity: 0.5; font-size: 0.7rem;"></span>
+    </p>
     <nav class="footer-links" aria-label="Footer navigation">
       <a href="mailto:admin@westbrookai.com" aria-label="Email us">admin@westbrookai.com</a>
       <a href="privacy_policy.html">Privacy Policy</a>
     </nav>
   </footer>
+
+  <script>
+    // Load version info
+    fetch('/version.txt')
+      .then(response => response.ok ? response.text() : null)
+      .then(data => {
+        if (!data) return;
+        const lines = data.split('\n');
+        const version = lines.find(l => l.startsWith('VERSION='))?.split('=')[1];
+        if (version) {
+          document.getElementById('version-info').textContent = ` • v${version}`;
+        }
+      })
+      .catch(() => {}); // Silently fail if version.txt doesn't exist
+  </script>
 
 </body>
 </html>
