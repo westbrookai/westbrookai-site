@@ -1,5 +1,7 @@
 name: Deploy to Cloudflare Pages
 
+run-name: "${{ github.event_name == 'pull_request' && format('PR #{0} @ {1}', github.event.pull_request.number, github.sha) || format('Push @ {0}', github.sha) }}"
+
 on:
   push:
     branches:
