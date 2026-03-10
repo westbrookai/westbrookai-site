@@ -51,6 +51,13 @@ jobs:
 
       - name: Show deployment URLs
         run: |
+          # Output to console (visible in gh run view --log)
+          echo "🚀 Deployment Complete!"
+          echo "Preview URL: ${{ steps.cf_pages.outputs.url }}"
+          echo "Alias: ${{ steps.cf_pages.outputs.alias }}"
+          echo "Environment: ${{ steps.cf_pages.outputs.environment }}"
+
+          # Add to summary (visible in GitHub UI)
           echo "## 🚀 Deployment Complete" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Environment:** ${{ steps.cf_pages.outputs.environment }}" >> $GITHUB_STEP_SUMMARY
@@ -58,6 +65,14 @@ jobs:
           echo "### 🔗 URLs" >> $GITHUB_STEP_SUMMARY
           echo "- **Preview URL:** ${{ steps.cf_pages.outputs.url }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Alias:** ${{ steps.cf_pages.outputs.alias }}" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "---" >> $GITHUB_STEP_SUMMARY
-          echo "View this deployment at: ${{ steps.cf_pages.outputs.url }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Comment PR with deployment URL
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} --body "## 🚀 Preview Deployment
+
+          **Preview URL:** ${{ steps.cf_pages.outputs.url }}
+
+          Build completed at $(TZ='Australia/Sydney' date '+%Y-%m-%d %H:%M:%S %Z')"
