@@ -1,36 +1,29 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Westbrook AI builds infrastructure for AI agents. Security-first registry, runtime, and tooling for autonomous agents. Based in Sydney, Australia.">
-
   <!-- Build Info (visible in source only) -->
   <meta name="build-version" content="">
   <meta name="build-date" content="">
   <meta name="build-branch" content="">
-
   <!-- Open Graph / Social Media -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://westbrookai.com/">
   <meta property="og:title" content="Westbrook AI — Infrastructure for AI agents">
   <meta property="og:description" content="Security-first registry, runtime, and tooling for autonomous agents. Based in Sydney, Australia.">
   <meta property="og:image" content="https://westbrookai.com/og-image.jpg">
-
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://westbrookai.com/">
   <meta property="twitter:title" content="Westbrook AI — Infrastructure for AI agents">
   <meta property="twitter:description" content="Security-first registry, runtime, and tooling for autonomous agents. Based in Sydney, Australia.">
   <meta property="twitter:image" content="https://westbrookai.com/og-image.jpg">
-
   <title>Westbrook AI — Infrastructure for AI agents</title>
-
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="alternate icon" href="/favicon.ico">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
   <style>
@@ -43,13 +36,10 @@
       --border: #E2E2DC;
       --card-bg: #FFFFFF;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html {
       scroll-behavior: smooth;
     }
-
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--bg);
@@ -57,7 +47,6 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
-
     nav {
       display: flex;
       justify-content: space-between;
@@ -66,7 +55,6 @@
       margin: 0 auto;
       padding: 2rem 1.5rem;
     }
-
     .logo {
       font-family: 'Playfair Display', serif;
       font-size: 1.25rem;
@@ -75,15 +63,12 @@
       text-decoration: none;
       letter-spacing: -0.02em;
     }
-
     .logo span { color: var(--accent); }
-
     .nav-links {
       display: flex;
       gap: 1.5rem;
       align-items: center;
     }
-
     nav a.nav-link {
       font-size: 0.875rem;
       color: var(--muted);
@@ -92,17 +77,14 @@
       padding: 0.5rem 1rem;
       border-radius: 6px;
     }
-
     nav a.nav-link:hover {
       color: var(--text);
       background: var(--accent-light);
     }
-
     nav a.nav-link.active {
       color: var(--accent);
       font-weight: 500;
     }
-
     nav a.nav-link:focus,
     .logo:focus,
     .card-link:focus,
@@ -110,13 +92,11 @@
       outline: 2px solid var(--accent);
       outline-offset: 2px;
     }
-
     .hero {
       max-width: 960px;
       margin: 0 auto;
       padding: 6rem 1.5rem 4rem;
     }
-
     .hero h1 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.25rem, 5vw, 3.25rem);
@@ -125,7 +105,6 @@
       letter-spacing: -0.03em;
       max-width: 600px;
     }
-
     .hero p {
       margin-top: 1.5rem;
       font-size: 1.125rem;
@@ -133,14 +112,12 @@
       max-width: 480px;
       line-height: 1.7;
     }
-
     .hero-line {
       width: 48px;
       height: 2px;
       background: var(--accent);
       margin-top: 2rem;
     }
-
     .products {
       max-width: 960px;
       margin: 0 auto;
@@ -150,8 +127,39 @@
       gap: 1.5rem;
     }
 
+    /* Mission / Vision section */
+    .mission {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+    .mission-block .mission-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .mission-block p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
     @media (max-width: 640px) {
       .products { grid-template-columns: 1fr; }
+      .mission {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
       nav {
         padding: 1.5rem 1rem;
         flex-direction: column;
@@ -175,7 +183,6 @@
         gap: 0.75rem;
       }
     }
-
     .card {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -183,12 +190,10 @@
       padding: 2.5rem 2rem;
       transition: border-color 0.3s, box-shadow 0.3s;
     }
-
     .card:hover {
       border-color: var(--accent);
       box-shadow: 0 4px 24px rgba(45, 90, 61, 0.06);
     }
-
     .card-badge {
       display: inline-block;
       font-size: 0.7rem;
@@ -201,7 +206,6 @@
       border-radius: 4px;
       margin-bottom: 1.25rem;
     }
-
     .card h2 {
       font-family: 'Playfair Display', serif;
       font-size: 1.5rem;
@@ -209,13 +213,11 @@
       letter-spacing: -0.02em;
       margin-bottom: 0.75rem;
     }
-
     .card p {
       color: var(--muted);
       font-size: 0.95rem;
       line-height: 1.7;
     }
-
     .card-link {
       display: inline-block;
       margin-top: 1.5rem;
@@ -226,16 +228,13 @@
       border-bottom: 1px solid transparent;
       transition: border-color 0.2s;
     }
-
     .card-link:hover { border-bottom-color: var(--accent); }
-
     .about {
       max-width: 960px;
       margin: 0 auto;
       padding: 3rem 1.5rem;
       border-top: 1px solid var(--border);
     }
-
     .about-label {
       font-size: 0.7rem;
       font-weight: 700;
@@ -244,14 +243,12 @@
       color: var(--muted);
       margin-bottom: 1.25rem;
     }
-
     .about p {
       color: var(--muted);
       font-size: 1rem;
       max-width: 540px;
       line-height: 1.8;
     }
-
     footer {
       max-width: 960px;
       margin: 0 auto;
@@ -263,39 +260,33 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
-
     footer p {
       font-size: 0.8rem;
       color: var(--muted);
     }
-
     footer .footer-links {
       display: flex;
       gap: 1.5rem;
     }
-
     footer a {
       font-size: 0.8rem;
       color: var(--muted);
       text-decoration: none;
       transition: color 0.2s;
     }
-
     footer a:hover { color: var(--text); }
-
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(16px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
     .hero h1 { animation: fadeUp 0.6s ease both; }
     .hero p { animation: fadeUp 0.6s ease 0.1s both; }
     .hero-line { animation: fadeUp 0.6s ease 0.2s both; }
     .card:first-child, article.card:first-child { animation: fadeUp 0.5s ease 0.3s both; }
     .card:last-child, article.card:last-child { animation: fadeUp 0.5s ease 0.4s both; }
+    .mission { animation: fadeUp 0.5s ease 0.45s both; }
     .about { animation: fadeUp 0.5s ease 0.5s both; }
     footer { animation: fadeUp 0.5s ease 0.6s both; }
-
     /* Reduced motion support */
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -304,7 +295,6 @@
   </style>
 </head>
 <body>
-
   <nav aria-label="Main navigation">
     <a href="index.html" class="logo" aria-label="Westbrook AI Home">Westbrook<span>AI</span></a>
     <div class="nav-links">
@@ -314,13 +304,11 @@
       <a href="mailto:admin@westbrookai.com" class="nav-link" aria-label="Contact us via email">Contact</a>
     </div>
   </nav>
-
   <section class="hero">
     <h1>Infrastructure for AI agents.</h1>
     <p>Westbrook AI builds security-first infrastructure for autonomous agents. Registry, runtime, and tooling you can trust. Based in Sydney, Australia.</p>
     <div class="hero-line"></div>
   </section>
-
   <section class="products" aria-label="Our products">
     <article class="card">
       <div class="card-badge">For Parents</div>
@@ -335,13 +323,21 @@
       <a href="https://zipsa.dev" class="card-link" target="_blank" rel="noopener noreferrer" aria-label="Learn more about Zipsa (opens in new tab)">Learn more →</a>
     </article>
   </section>
-
+  <section class="mission" aria-label="Mission and Vision">
+    <div class="mission-block">
+      <div class="mission-label">Mission</div>
+      <p>Empower anyone to build AI agents they can trust.</p>
+    </div>
+    <div class="mission-block">
+      <div class="mission-label">Vision</div>
+      <p>A world where anyone can run AI agents safely — everywhere.</p>
+    </div>
+  </section>
   <section class="about" aria-labelledby="about-heading">
     <div class="about-label" id="about-heading">About</div>
     <p>Westbrook AI builds infrastructure for AI agents. We focus on security, auditability, and trust — enabling developers to build autonomous systems with confidence.</p>
     <p style="margin-top: 1rem;"><a href="about.html" class="card-link">Read more about Westbrook AI →</a></p>
   </section>
-
   <footer role="contentinfo">
     <p>
       &copy; 2026 Westbrook AI Pty Ltd. Sydney, Australia.
@@ -352,17 +348,14 @@
       <a href="privacy_policy.html">Privacy Policy</a>
     </nav>
   </footer>
-
   <script>
     // Read version info from meta tags (injected during build)
     const version = document.querySelector('meta[name="build-version"]')?.content;
     const buildDate = document.querySelector('meta[name="build-date"]')?.content;
-
     // Display only hash in footer, but show date on hover
     if (version) {
       const versionEl = document.getElementById('version-info');
       versionEl.textContent = ` • v${version}`;
-
       if (buildDate) {
         // Parse Sydney time (format: 2026-03-10T18:12:06+1100)
         const date = new Date(buildDate);
@@ -379,6 +372,5 @@
       }
     }
   </script>
-
 </body>
 </html>
