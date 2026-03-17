@@ -29,3 +29,5 @@ yarn-error.log*
 
 # Wrangler cache
 .wrangler/tmp/
+
+.agenthud/
