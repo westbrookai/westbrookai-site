@@ -66,6 +66,14 @@
       color: var(--text);
       text-decoration: none;
       letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .logo img {
+      width: 36px;
+      height: 36px;
+      display: block;
     }
     .logo span { color: var(--accent); }
     .nav-links {
@@ -100,6 +108,12 @@
       max-width: 960px;
       margin: 0 auto;
       padding: 6rem 1.5rem 4rem;
+    }
+    .hero-logo {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 2rem;
+      display: block;
     }
     .hero h1 {
       font-family: 'Playfair Display', serif;
@@ -239,13 +253,23 @@
       padding: 3rem 1.5rem;
       border-top: 1px solid var(--border);
     }
+    .about-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .about-logo {
+      width: 56px;
+      height: 56px;
+      display: block;
+    }
     .about-label {
       font-size: 0.7rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: var(--muted);
-      margin-bottom: 1.25rem;
     }
     .about p {
       color: var(--muted);
@@ -283,9 +307,10 @@
       from { opacity: 0; transform: translateY(16px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    .hero h1 { animation: fadeUp 0.6s ease both; }
-    .hero p { animation: fadeUp 0.6s ease 0.1s both; }
-    .hero-line { animation: fadeUp 0.6s ease 0.2s both; }
+    .hero-logo { animation: fadeUp 0.6s ease both; }
+    .hero h1 { animation: fadeUp 0.6s ease 0.1s both; }
+    .hero p { animation: fadeUp 0.6s ease 0.2s both; }
+    .hero-line { animation: fadeUp 0.6s ease 0.3s both; }
     .card:first-child, article.card:first-child { animation: fadeUp 0.5s ease 0.3s both; }
     .card:last-child, article.card:last-child { animation: fadeUp 0.5s ease 0.4s both; }
     .mission { animation: fadeUp 0.5s ease 0.45s both; }
@@ -300,7 +325,10 @@
 </head>
 <body>
   <nav aria-label="Main navigation">
-    <a href="index.html" class="logo" aria-label="Westbrook AI Home">Westbrook<span>AI</span></a>
+    <a href="index.html" class="logo" aria-label="Westbrook AI Home">
+      <img src="wai.svg" alt="Westbrook AI Logo">
+      <span>Westbrook<span>AI</span></span>
+    </a>
     <div class="nav-links">
       <a href="index.html" class="nav-link active">Home</a>
       <a href="about.html" class="nav-link">About</a>
@@ -309,6 +337,7 @@
     </div>
   </nav>
   <section class="hero">
+    <img src="wai.svg" alt="Westbrook AI" class="hero-logo">
     <h1>Infrastructure for AI agents.</h1>
     <p>Westbrook AI builds security-first infrastructure for autonomous agents. Registry, runtime, and tooling you can trust. Based in Sydney, Australia.</p>
     <div class="hero-line"></div>
@@ -338,7 +367,10 @@
     </div>
   </section>
   <section class="about" aria-labelledby="about-heading">
-    <div class="about-label" id="about-heading">About</div>
+    <div class="about-header">
+      <img src="wai.svg" alt="Westbrook AI" class="about-logo">
+      <div class="about-label" id="about-heading">About</div>
+    </div>
     <p>Westbrook AI builds infrastructure for AI agents. We focus on security, auditability, and trust — enabling developers to build autonomous systems with confidence.</p>
     <p style="margin-top: 1rem;"><a href="about.html" class="card-link">Read more about Westbrook AI →</a></p>
   </section>

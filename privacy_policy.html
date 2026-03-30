@@ -54,6 +54,15 @@
       color: var(--text);
       text-decoration: none;
       letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo img {
+      width: 36px;
+      height: 36px;
+      display: block;
     }
 
     .logo span { color: var(--accent); }
@@ -91,6 +100,13 @@
 
     .content {
       max-width: 680px;
+    }
+
+    .content-logo {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 2rem;
+      display: block;
     }
 
     h1 {
@@ -217,8 +233,9 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    h1 { animation: fadeUp 0.6s ease both; }
-    .content { animation: fadeUp 0.6s ease 0.1s both; }
+    .content-logo { animation: fadeUp 0.6s ease both; }
+    h1 { animation: fadeUp 0.6s ease 0.1s both; }
+    .content p, .content ul { animation: fadeUp 0.6s ease 0.2s both; }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -229,7 +246,10 @@
 <body>
 
   <nav aria-label="Main navigation">
-    <a href="index.html" class="logo" aria-label="Westbrook AI Home">Westbrook<span>AI</span></a>
+    <a href="index.html" class="logo" aria-label="Westbrook AI Home">
+      <img src="wai.svg" alt="Westbrook AI Logo">
+      <span>Westbrook<span>AI</span></span>
+    </a>
     <div class="nav-links">
       <a href="index.html" class="nav-link">Home</a>
       <a href="about.html" class="nav-link">About</a>
@@ -240,6 +260,7 @@
 
   <main>
     <div class="content">
+      <img src="wai.svg" alt="Westbrook AI" class="content-logo">
       <h1>Privacy Policy</h1>
 
       <p>Westbrook AI Pty Ltd respects your privacy. This page explains, in general terms, how we may collect, use, and protect information when you visit our website or use our products and services.</p>
