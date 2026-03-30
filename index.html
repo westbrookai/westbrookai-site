@@ -66,6 +66,14 @@
       color: var(--text);
       text-decoration: none;
       letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .logo img {
+      width: 36px;
+      height: 36px;
+      display: block;
     }
     .logo span { color: var(--accent); }
     .nav-links {
@@ -300,7 +308,10 @@
 </head>
 <body>
   <nav aria-label="Main navigation">
-    <a href="index.html" class="logo" aria-label="Westbrook AI Home">Westbrook<span>AI</span></a>
+    <a href="index.html" class="logo" aria-label="Westbrook AI Home">
+      <img src="wai.svg" alt="Westbrook AI Logo">
+      <span>Westbrook<span>AI</span></span>
+    </a>
     <div class="nav-links">
       <a href="index.html" class="nav-link active">Home</a>
       <a href="about.html" class="nav-link">About</a>
